@@ -39,18 +39,6 @@ multiply = memoize(10)(multiply);
 export default multiply;
 ```
 
-### ES7
-**ES7 decorators are experimental and the API might change!!**
-
-```javascript
-import memoize from 'lru-memoize';
-
-@memoize(10)
-export default function multiply(a, b, c) {
-  return a * b * c;
-}
-```
-
 ## API
 
 ### `memoize(limit:Integer?, equals:Function?, deepObjects:Boolean?)`
