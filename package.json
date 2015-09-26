@@ -35,7 +35,7 @@
     "babel-loader": "5.3.2",
     "eslint": "0.24.1",
     "eslint-config-airbnb": "0.0.6",
-    "expect": "1.10.0",
+    "expect": "1.11.0",
     "mocha": "2.3.3",
     "rifraf": "2.0.2",
     "rimraf": "2.4.3",
