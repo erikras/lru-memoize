@@ -1,16 +1,16 @@
 const hasOwn = Object.prototype.hasOwnProperty;
 export default function deepEquals(equals, deepObjects) {
-  function deep(a, b) {
-    if (equals(a, b)) {
+  function deep(valueA, valueB) {
+    if (equals(valueA, valueB)) {
       return true;
     }
 
-    if (Array.isArray(a)) {
-      if (!Array.isArray(b) || a.length !== b.length) {
+    if (Array.isArray(valueA)) {
+      if (!Array.isArray(valueB) || valueA.length !== valueB.length) {
         return false;
       }
-      for (let i = 0; i < a.length; i++) {
-        if (!deep(a[i], b[i])) {
+      for (let index = 0; index < valueA.length; index++) {
+        if (!deep(valueA[index], valueB[index])) {
           return false;
         }
       }
@@ -18,25 +18,25 @@ export default function deepEquals(equals, deepObjects) {
       return true;
     }
 
-    if (Array.isArray(b)) {
+    if (Array.isArray(valueB)) {
       return false;
     }
 
-    if (typeof a === 'object') {
-      if (typeof b !== 'object') {
+    if (typeof valueA === 'object') {
+      if (typeof valueB !== 'object') {
         return false;
       }
 
-      const aKeys = Object.keys(a);
-      const bKeys = Object.keys(b);
+      const aKeys = Object.keys(valueA);
+      const bKeys = Object.keys(valueB);
 
       if (aKeys.length !== bKeys.length) {
         return false;
       }
 
-      for (let i = 0; i < aKeys.length; i++) {
-        const key = aKeys[i];
-        if (hasOwn.call(a, key) && (!hasOwn.call(b, key) || !(deepObjects ? deep : equals)(a[key], b[key]))) {
+      for (let index = 0; index < aKeys.length; index++) {
+        const key = aKeys[index];
+        if (hasOwn.call(valueA, key) && (!hasOwn.call(valueB, key) || !(deepObjects ? deep : equals)(valueA[key], valueB[key]))) {
           return false;
         }
       }

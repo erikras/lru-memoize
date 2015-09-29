@@ -4,5 +4,9 @@
     "browser": true,
     "mocha": true,
     "node": true
+  },
+  "rules": {
+    "comma-dangle": 0,  // not sure why airbnb turned this on. gross!
+    "indent": [2, 2, {"SwitchCase": 1}]
   }
 }

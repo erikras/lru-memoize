@@ -8,7 +8,7 @@ function createCache(limit, equals) {
 
 export default function memoize(...config) {
   let limit = 1;
-  let equals = (a, b) => a === b;
+  let equals = (valueA, valueB) => valueA === valueB;
   let deepObjects = false;
   if (typeof config[0] === 'number') {
     limit = config.shift();
