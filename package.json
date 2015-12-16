@@ -38,7 +38,7 @@
     "eslint": "^1.7.1",
     "eslint-config-airbnb": "0.1.0",
     "eslint-plugin-react": "^3.5.0",
-    "expect": "^1.11.0",
+    "expect": "^1.13.4",
     "mocha": "^2.3.3",
     "rifraf": "^2.0.2",
     "rimraf": "^2.4.3",
