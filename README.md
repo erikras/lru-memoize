@@ -60,3 +60,6 @@ Returns `(Function) => Function`.
 
 > Whether or not to perform a deep equals on Object values. Defaults to `false`.
 
+## TypeScript
+
+Type definitions can be found in `index.d.ts` which should automatically be picked up by the TypeScript compiler when this package is installed.
