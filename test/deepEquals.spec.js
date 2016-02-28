@@ -1,7 +1,7 @@
 import expect from 'expect';
 import deepEquals from '../src/deepEquals';
 
-const tripleEquals = deepEquals((a, b) => a === b);
+const tripleEquals = deepEquals((valueA, valueB) => valueA === valueB);
 
 describe('deepEquals', () => {
   it('should return true if argument fields are equal', () => {
@@ -27,12 +27,16 @@ describe('deepEquals', () => {
       )
     ).toBe(true);
 
-    const o = {};
+    const obj = {};
     expect(
       tripleEquals(
-        {a: 1, b: 2, c: o},
-        {a: 1, b: 2, c: o}
+        {a: 1, b: 2, c: obj},
+        {a: 1, b: 2, c: obj}
       )
+    ).toBe(true);
+
+    expect(
+      tripleEquals(null, null)
     ).toBe(true);
   });
 
@@ -52,68 +56,71 @@ describe('deepEquals', () => {
     expect(
       tripleEquals(4, {})
     ).toBe(false);
-
   });
 
   it('should return false if arguments are object and number', () => {
     expect(
       tripleEquals({}, 4)
     ).toBe(false);
-
   });
 
   it('should return false if arguments are number and array', () => {
     expect(
       tripleEquals(4, [])
     ).toBe(false);
-
   });
 
   it('should return false if arguments are array and number', () => {
     expect(
       tripleEquals([], 4)
     ).toBe(false);
-
   });
 
   it('should return false if arguments are string and object', () => {
     expect(
       tripleEquals('cat', {})
     ).toBe(false);
-
   });
 
   it('should return false if arguments are object and string', () => {
     expect(
       tripleEquals({}, 'cat')
     ).toBe(false);
-
   });
 
   it('should return false if arguments are string and array', () => {
     expect(
       tripleEquals('cat', ['c', 'a', 't'])
     ).toBe(false);
-
   });
 
   it('should return false if arguments are array and string', () => {
     expect(
       tripleEquals(['c', 'a', 't'], 'cat')
     ).toBe(false);
-
   });
 
   it('should return false if arguments are array and object', () => {
     expect(
       tripleEquals([], {})
     ).toBe(false);
-
   });
 
   it('should return false if arguments are object and array', () => {
     expect(
       tripleEquals({}, [])
+    ).toBe(false);
+  });
+
+  it('should return false if arguments are object and null', () => {
+    expect(
+      tripleEquals({ a: 1 }, null)
+    ).toBe(false);
+  });
+
+  it('should return false if arguments are null and object', () => {
+    expect(
+      tripleEquals(null, { a: 1 })
     ).toBe(false);
   });
 
@@ -161,6 +168,4 @@ describe('deepEquals', () => {
       )
     ).toBe(false);
   });
-
-})
-;
+});
