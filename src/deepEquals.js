@@ -27,6 +27,12 @@ export default function deepEquals(equals, deepObjects) {
         return false;
       }
 
+      const isANull = valueA === null;
+      const isBNull = valueB === null;
+      if (isANull || isBNull) {
+        return isANull === isBNull;
+      }
+
       const aKeys = Object.keys(valueA);
       const bKeys = Object.keys(valueB);
 
