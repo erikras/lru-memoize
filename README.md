@@ -44,19 +44,19 @@ export default multiply;
 
 ## API
 
-### `memoize(limit:Integer?, equals:Function?, deepObjects:Boolean?)`
+#### `memoize(limit:Integer?, equals:Function?, deepObjects:Boolean?)`
 
 Returns `(Function) => Function`.
 
-##### -`limit` : Integer [optional]
+###### -`limit` : Integer [optional]
 
 > The number of `arguments -> value` mappings to keep in memory. Defaults to `1`.
 
-##### -`equals` : Function [optional]
+###### -`equals` : Function [optional]
 
 > A function to compare two values for equality. Defaults to `===`.
 
-##### -`deepObjects` : Boolean [optional]
+###### -`deepObjects` : Boolean [optional]
 
 > Whether or not to perform a deep equals on Object values. Defaults to `false`.
 
