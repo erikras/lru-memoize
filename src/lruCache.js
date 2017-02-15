@@ -18,7 +18,7 @@ export default function lruCache(limit, equals) {
     }
 
     // No entry found in cache, return null
-    return null;
+    return undefined;
   }
 
   function put(key, value) {
