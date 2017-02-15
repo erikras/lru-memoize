@@ -9,7 +9,7 @@ export default function deepEquals(equals, deepObjects) {
       if (!Array.isArray(valueB) || valueA.length !== valueB.length) {
         return false;
       }
-      for (let index = 0; index < valueA.length; index++) {
+      for (let index = 0; index < valueA.length; index += 1) {
         if (!deep(valueA[index], valueB[index])) {
           return false;
         }
@@ -40,9 +40,11 @@ export default function deepEquals(equals, deepObjects) {
         return false;
       }
 
-      for (let index = 0; index < aKeys.length; index++) {
+      for (let index = 0; index < aKeys.length; index += 1) {
         const key = aKeys[index];
-        if (hasOwn.call(valueA, key) && (!hasOwn.call(valueB, key) || !(deepObjects ? deep : equals)(valueA[key], valueB[key]))) {
+        if (
+          hasOwn.call(valueA, key) &&
+          (!hasOwn.call(valueB, key) || !(deepObjects ? deep : equals)(valueA[key], valueB[key]))) {
           return false;
         }
       }

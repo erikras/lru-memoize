@@ -2,7 +2,7 @@ export default function lruCache(limit, equals) {
   const entries = [];
 
   function get(key) {
-    for (let index = 0; index < entries.length; index++) {
+    for (let index = 0; index < entries.length; index += 1) {
       const entry = entries[index];
       if (equals(key, entry.key)) {
         if (index > 0) {
@@ -13,16 +13,19 @@ export default function lruCache(limit, equals) {
         return entry.value;
       }
     }
+
+    // No memoization found, return null
+    return null;
   }
 
   function put(key, value) {
     if (!get(key)) {
-      entries.unshift({key, value});
+      entries.unshift({ key, value });
       if (entries.length > limit) {
         entries.pop();
       }
     }
   }
 
-  return {get, put};
+  return { get, put };
 }

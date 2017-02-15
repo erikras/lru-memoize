@@ -13,8 +13,8 @@ module.exports = {
     'react': reactExternal
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+    rules: [
+      { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ }
     ]
   },
   output: {
@@ -22,6 +22,6 @@ module.exports = {
     libraryTarget: 'umd'
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['.js']
   }
 };
