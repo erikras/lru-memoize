@@ -6,7 +6,7 @@ function createCache(limit, equals) {
   return limit === 1 ? singletonCache(equals) : lruCache(limit, equals);
 }
 
-export default function memoize(...config) {
+export default function memoize(fn, ...config) {
   let limit = 1;
   let equals = (valueA, valueB) => valueA === valueB;
   let deepObjects = false;
@@ -22,7 +22,7 @@ export default function memoize(...config) {
 
   const cache = createCache(limit, deepEquals(equals, deepObjects));
 
-  return (fn) => (...args) => {
+  return (...args) => {
     let value = cache.get(args);
     if (value === undefined) {
       value = fn.apply(fn, args);
