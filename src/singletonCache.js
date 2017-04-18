@@ -5,10 +5,11 @@ export default function singletonCache(equals) {
       if (entry && equals(key, entry.key)) {
         return entry.value;
       }
+      return null;
     },
 
     put(key, value) {
-      entry = {key, value};
+      entry = { key, value };
     }
   };
 }

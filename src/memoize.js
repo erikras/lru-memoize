@@ -22,7 +22,7 @@ export default function memoize(...config) {
 
   const cache = createCache(limit, deepEquals(equals, deepObjects));
 
-  return (fn) => (...args) => {
+  return fn => (...args) => {
     let value = cache.get(args);
     if (value === undefined) {
       value = fn.apply(fn, args);

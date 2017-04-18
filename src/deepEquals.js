@@ -1,4 +1,4 @@
-const hasOwn = Object.prototype.hasOwnProperty;
+const hasOwn = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
 export default function deepEquals(equals, deepObjects) {
   function deep(valueA, valueB) {
     if (equals(valueA, valueB)) {
@@ -9,11 +9,12 @@ export default function deepEquals(equals, deepObjects) {
       if (!Array.isArray(valueB) || valueA.length !== valueB.length) {
         return false;
       }
-      for (let index = 0; index < valueA.length; index++) {
-        if (!deep(valueA[index], valueB[index])) {
-          return false;
-        }
+
+      // Check deep equality of each value in A against the same indexed value in B
+      if (!valueA.every((value, index) => deep(value, valueB[index]))) {
+        return false;
       }
+
       // could not find unequal items
       return true;
     }
@@ -40,12 +41,18 @@ export default function deepEquals(equals, deepObjects) {
         return false;
       }
 
-      for (let index = 0; index < aKeys.length; index++) {
-        const key = aKeys[index];
-        if (hasOwn.call(valueA, key) && (!hasOwn.call(valueB, key) || !(deepObjects ? deep : equals)(valueA[key], valueB[key]))) {
-          return false;
-        }
-      }
+      // Should we compare with shallow equivalence or deep equivalence?
+      const equalityChecker = deepObjects ? deep : equals;
+
+      // Check if objects share same keys, and each of those keys are equal
+      if (!aKeys.every(
+        aKey => (
+          hasOwn(valueA, aKey) && (
+            hasOwn(valueB, aKey) || equalityChecker(valueA[aKey], valueB[aKey])
+          )
+        )
+      )) { return false; }
+
       // could not find unequal keys or values
       return true;
     }
