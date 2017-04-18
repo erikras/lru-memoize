@@ -39,6 +39,9 @@ export default function memoize(...config) {
   }
   if (typeof config[0] === 'function') {
     equals = config.shift();
+  } else if (typeof config[0] === 'undefined') {
+    // Support passing undefined equal argument;
+    config.shift();
   }
   if (typeof config[0] === 'boolean') {
     deepObjects = config[0];
