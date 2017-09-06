@@ -11,19 +11,19 @@ export default function lruCache(limit, equals) {
       // Cached entry not at top of cache, move it to the top
       if (cacheIndex > 0) {
         entries.slice(cacheIndex, 1)
-        entries.unshift(entry)
+        entries.push(entry)
       }
 
       return entry.value
     }
 
     // No entry found in cache, return null
-    return undefined
+    return null
   }
 
   function put(key, value) {
     if (!get(key)) {
-      entries.unshift({ key, value })
+      entries.push({ key, value })
       if (entries.length > limit) {
         entries.pop()
       }
