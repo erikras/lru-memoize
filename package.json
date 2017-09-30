@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "A utility to provide lru memoization for any js function",
   "main": "./lib/index.js",
+  "typings": "./index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/erikras/lru-memoize"
