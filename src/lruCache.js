@@ -21,7 +21,7 @@ export default function lruCache(limit, equals) {
 
       // Cached entry not at top of cache, move it to the top
       if (cacheIndex > 0) {
-        entries.slice(cacheIndex, 1)
+        entries.splice(cacheIndex, 1)
         entries.unshift(entry)
       }
 
