@@ -1,18 +1,17 @@
 const findIndex = (arr, fn) => {
   for (let i = 0; i < arr.length; i++) {
     if (fn(arr[i])) {
-      return i;
+      return i
     }
   }
 
-  return -1;
+  return -1
 }
 
 export default function lruCache(limit, equals) {
   const entries = []
 
   function get(key) {
-    entries 
     const cacheIndex = findIndex(entries, entry => equals(key, entry.key))
 
     // We found a cached entry
