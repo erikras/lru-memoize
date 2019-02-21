@@ -1,6 +1,6 @@
 {
   "name": "lru-memoize",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A utility to provide lru memoization for any js function",
   "main": "dist/lru-memoize.cjs.js",
   "jsnext:main": "dist/lru-memoize.es.js",
