@@ -1,18 +1,22 @@
+sudo: false
 language: node_js
-
 before_install:
-  - npm install -g npm@5
-
+  - npm install -g npm@6.7.0
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-  - "6"
-  - "5"
-  - "4"
-  - "stable"
-
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - 'stable'
 script:
-  - npm run lint
-  - npm test
-
+  - npm start validate
 after_success:
-  - npm run test:cov
-  - npm run test:codecov
+  - npx codecov
+branches:
+  only:
+    - master

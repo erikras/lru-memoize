@@ -1,0 +1,10 @@
+// @flow
+export type Entry = {
+  key: any,
+  value: any
+};
+type ConfigItem = number | Function | boolean | void;
+export type Config = ConfigItem[];
+export type Equals = (any, any) => boolean;
+
+declare export default function memoize(Config): Function => Function;

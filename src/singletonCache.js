@@ -1,14 +1,17 @@
-export default function singletonCache(equals) {
-  let entry
+// @flow
+import type { Entry, Equals } from ".";
+
+export default function singletonCache(equals: Equals) {
+  let entry: Entry;
   return {
-    get(key) {
+    get(key: any) {
       if (entry && equals(key, entry.key)) {
-        return entry.value
+        return entry.value;
       }
     },
 
-    put(key, value) {
-      entry = { key, value }
+    put(key: any, value: any) {
+      entry = { key, value };
     }
-  }
+  };
 }
